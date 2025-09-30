@@ -44,8 +44,10 @@ jobs:
               if [ ! -f "$FILE" ]; then
                 echo "File not found, creating $FILE..."
                 echo "# Git Commit" > "$FILE"
-                echo "[![MahbubHS Auto Commit](https://github.com/MahbubHS/active/actions/workflows/main.yml/badge.svg)](https://github.com/MahbubHS/active/actions/workflows/main.yml)" >> "$FILE"
+                echo "[![MahbubHS Auto Commit](https://github.com/MahbubHS/active/actions/workflows/main.yml/badge.svg)](https://github.com/MahbubHS/active/actions/workflows/main.yml)" >> "$FILE" 
+                echo "" >> "$FILE"
                 echo "This file was added - $(date +"%b %d, %Y")" >> "$FILE"
+                echo "" >> "$FILE"
                 echo "Last commit at $(date +"%I:%M %p")" >> "$FILE"
                 echo "" >> "$FILE"
                 echo "Daily git commit" >> "$FILE"
