@@ -59,7 +59,8 @@ jobs:
                 echo "Current commit number: $CURRENT_COUNT"
                 NEXT_COUNT=$((CURRENT_COUNT + 1))
                 sed -i "s/commit number: .*/commit number: $NEXT_COUNT/" "$FILE"
-                echo "Updated commit number to: $NEXT_COUNT"
+                sed -i "s/Last commit at UTC -.*/Last commit at UTC - $(date +"%I:%M %p")/" "$FILE"
+                echo "Updated commit number to: $NEXT_COUNT and time to $(date +"%I:%M %p")"
               fi
 
               echo "Contents of the file:"
