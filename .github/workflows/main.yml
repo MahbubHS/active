@@ -2,7 +2,7 @@ name: MahbubHS Auto Commit
 
 on:
   schedule:
-    - cron: "*/60 * * * *"
+    - cron: "*/300 * * * *"
 
 jobs:
   commit:
@@ -17,8 +17,15 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          if [ $((RANDOM % 2)) -eq 0 ]; then
+            git config --global user.name "${{ github.actor }}"
+            git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+            echo "Using user info: ${{ github.actor }}"
+          else
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            echo "Using GitHub Actions[bot]"
+          fi
 
       - name: Switch to main branch
         run: git checkout main
@@ -71,13 +78,12 @@ jobs:
               
               echo "Committing changes..."
               git commit -m "Auto commit #$NEXT_COUNT : target - ($FILE)" --allow-empty
-
+              sleep 60
             done
 
             echo "Pulling latest changes to ensure we start with the latest commit..."
             git pull --rebase origin main
             git push origin main
-            sleep 60
           done
 
           echo "All commits completed successfully!"
