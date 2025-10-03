@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "*/300 * * * *"
+    - cron: "*/180 * * * *"
 
 jobs:
   commit:
@@ -79,7 +79,7 @@ jobs:
 
               echo "Committing changes..."
               git commit -m "Auto commit #$NEXT_COUNT : target - ($FILE)" --allow-empty
-              sleep 60
+              sleep 10
             done
 
             echo "Pulling latest changes to ensure we start with the latest commit..."
