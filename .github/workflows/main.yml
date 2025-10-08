@@ -23,7 +23,7 @@ jobs:
           set -e
 
           FILES=(".github/MahbubHS.md" "README.md" ".github/MahbubHS_1.md" ".github/MahbubHS_2.md")
-          COMMIT_LOOP_COUNT=15
+          COMMIT_LOOP_COUNT=20
 
           choose_committer() {
             # 0 = your info, 1 = bot info
